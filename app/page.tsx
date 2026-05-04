@@ -1,272 +1,306 @@
 import Link from 'next/link';
 
+function IconPin() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+      <circle cx="12" cy="10" r="3"/>
+    </svg>
+  );
+}
+
+function IconHome() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+      <polyline points="9,22 9,12 15,12 15,22"/>
+    </svg>
+  );
+}
+
+function IconChart() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="18" y1="20" x2="18" y2="10"/>
+      <line x1="12" y1="20" x2="12" y2="4"/>
+      <line x1="6" y1="20" x2="6" y2="14"/>
+    </svg>
+  );
+}
+
+function IconCheck() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="20,6 9,17 4,12"/>
+    </svg>
+  );
+}
+
+function IconX() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  );
+}
+
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="neural-gradient min-h-screen flex items-center justify-center px-4 pt-28 pb-16 relative overflow-hidden">
-        <div className="particles absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="particle"
-              style={{
-                left: `${(i * 17 + 3) % 100}%`,
-                top: `${(i * 13 + 7) % 100}%`,
-                animationDelay: `${(i * 0.4) % 6}s`,
-                animationDuration: `${6 + (i % 4)}s`,
-              }}
-            />
-          ))}
+      {/* ── HERO ─────────────────────────────────── */}
+      <section
+        className="hero-mesh tile"
+        style={{ paddingTop: '148px', paddingBottom: '128px', minHeight: '92vh', display: 'flex', alignItems: 'center' }}
+      >
+        <div className="content-wrap mx-auto text-center">
+          <div className="anim-fade-up" style={{ marginBottom: '22px' }}>
+            <span className="type-tagline" style={{ color: 'rgba(165,180,252,0.85)', letterSpacing: '0.14em' }}>
+              Result as a Service
+            </span>
+          </div>
+          <h1 className="type-hero anim-fade-up-1" style={{ color: 'var(--text-white)', marginBottom: '24px' }}>
+            We build AI.<br />
+            <span className="gradient-text">You pay for results.</span>
+          </h1>
+          <p
+            className="type-lead anim-fade-up-2 mx-auto"
+            style={{ color: 'var(--text-white-45)', maxWidth: '520px', marginBottom: '48px' }}
+          >
+            No licenses. No subscriptions. No hourly fees.
+            <br />Define the outcome — we deliver it.
+          </p>
+          <div className="flex gap-4 justify-center items-center flex-col sm:flex-row anim-fade-up-3">
+            <Link href="/what-we-do" className="btn-pill">See what we do</Link>
+            <Link href="/contact" className="btn-ghost-pill-dark">Talk to us</Link>
+          </div>
         </div>
 
-        {[...Array(5)].map((_, i) => (
-          <div
-            key={i}
-            className="data-stream"
-            style={{ left: `${20 + i * 15}%`, animationDelay: `${i * 0.6}s` }}
-          />
-        ))}
-
-        <div className="max-w-5xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center space-x-2 mb-8 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/5 backdrop-blur-sm">
-            <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shadow-lg shadow-cyan-400/50"></div>
-            <span className="text-cyan-400 text-sm font-mono tracking-wide">RESULT_AS_A_SERVICE</span>
+        {/* Floating stat chips — desktop only */}
+        <div
+          className="anim-float hidden lg:block"
+          style={{ position: 'absolute', top: '32%', left: '7%' }}
+        >
+          <div className="glass-card" style={{ padding: '14px 20px' }}>
+            <p className="type-fine-print" style={{ color: 'var(--text-white-45)', marginBottom: '5px' }}>Pricing model</p>
+            <p className="type-body-strong gradient-text">Per result only</p>
           </div>
-
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight">
-            <span className="text-white">We build AI.</span>
-            <br />
-            <span className="neon-glow-cyan inline-block">You pay for results.</span>
-          </h1>
-
-          <p className="text-xl md:text-2xl mb-12 text-slate-400 max-w-2xl mx-auto leading-relaxed font-light">
-            No licenses. No subscriptions. No hourly fees.
-            <br />
-            <span className="text-slate-300">Define the outcome — we deliver it.</span>
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link
-              href="/what-we-do"
-              className="group relative px-8 py-4 rounded-xl font-semibold text-lg cursor-pointer overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 opacity-100 group-hover:opacity-90 transition-opacity"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-400 opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></div>
-              <span className="relative z-10 text-white flex items-center space-x-2">
-                <span>See what we do</span>
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </span>
-            </Link>
-            <Link
-              href="/contact"
-              className="px-8 py-4 rounded-xl font-semibold text-lg border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-500/50 transition-all duration-300 cursor-pointer backdrop-blur-sm"
-            >
-              Talk to us
-            </Link>
+        </div>
+        <div
+          className="hidden lg:block"
+          style={{ position: 'absolute', bottom: '24%', right: '7%', animation: 'float 6s ease-in-out 0.8s infinite' }}
+        >
+          <div className="glass-card" style={{ padding: '14px 20px' }}>
+            <p className="type-fine-print" style={{ color: 'var(--text-white-45)', marginBottom: '5px' }}>Risk model</p>
+            <p className="type-body-strong" style={{ color: 'var(--text-white)' }}>100% on us</p>
           </div>
         </div>
       </section>
 
-      {/* RaaS vs Traditional */}
-      <section className="py-32 px-4" style={{ background: 'var(--bg-secondary)' }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-block text-cyan-400 text-sm font-mono mb-4 uppercase tracking-widest">
-              {'// THE_RAAS_DIFFERENCE'}
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Why RaaS changes everything
-            </h2>
-            <p className="text-lg text-slate-400 max-w-xl mx-auto">
-              Traditional models put the risk on you. We put it on us.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="holo-card rounded-2xl p-8 opacity-60">
-              <div className="w-10 h-10 rounded-lg bg-slate-700 flex items-center justify-center mb-4">
-                <span className="text-slate-400 text-xl font-bold">✕</span>
+      {/* ── RAAS DIFFERENCE ──────────────────────── */}
+      <section className="tile tile-dark text-center">
+        <div className="content-wrap mx-auto">
+          <p className="type-tagline mb-4" style={{ color: 'rgba(165,180,252,0.80)' }}>The RaaS Difference</p>
+          <h2 className="type-display mb-4" style={{ color: 'var(--text-white)' }}>Why RaaS changes everything</h2>
+          <p className="type-body mx-auto mb-14" style={{ color: 'var(--text-white-45)', maxWidth: '520px' }}>
+            Traditional models put the risk on you. We put it on us.
+          </p>
+          <div className="grid md:grid-cols-3 gap-5 text-left">
+            <div className="glass-card-dim" style={{ padding: '28px' }}>
+              <div style={{
+                width: '34px', height: '34px', borderRadius: '50%',
+                background: 'rgba(239,68,68,0.10)', border: '1px solid rgba(239,68,68,0.18)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                marginBottom: '18px', color: '#f87171',
+              }}>
+                <IconX />
               </div>
-              <h3 className="text-lg font-bold text-slate-300 mb-3">Traditional SaaS</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Buy a subscription. Learn the platform yourself. Configure it. Get results — maybe. Keep paying regardless.
+              <h3 className="type-body-strong mb-2" style={{ color: 'rgba(255,255,255,0.65)' }}>Traditional SaaS</h3>
+              <p className="type-caption mb-6" style={{ color: 'rgba(255,255,255,0.35)' }}>
+                Buy a subscription. Learn the platform. Configure it. Get results — maybe. Keep paying regardless.
               </p>
-              <div className="mt-5 text-xs font-mono text-slate-600 uppercase tracking-wider">Risk on you</div>
-            </div>
-
-            <div className="holo-card rounded-2xl p-8 opacity-60">
-              <div className="w-10 h-10 rounded-lg bg-slate-700 flex items-center justify-center mb-4">
-                <span className="text-slate-400 text-xl font-bold">✕</span>
-              </div>
-              <h3 className="text-lg font-bold text-slate-300 mb-3">Traditional Consulting</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Pay by the hour. Months of meetings and workshops. Deliverables that may or may not move the needle.
+              <p style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.10em', textTransform: 'uppercase', color: 'rgba(239,68,68,0.60)' }}>
+                Risk on you
               </p>
-              <div className="mt-5 text-xs font-mono text-slate-600 uppercase tracking-wider">Risk on you</div>
             </div>
 
-            <div className="holo-card rounded-2xl p-8 border border-cyan-500/40">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center mb-4">
-                <span className="text-white text-xl font-bold">✓</span>
+            <div className="glass-card-dim" style={{ padding: '28px' }}>
+              <div style={{
+                width: '34px', height: '34px', borderRadius: '50%',
+                background: 'rgba(239,68,68,0.10)', border: '1px solid rgba(239,68,68,0.18)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                marginBottom: '18px', color: '#f87171',
+              }}>
+                <IconX />
               </div>
-              <h3 className="text-lg font-bold text-white mb-3">Lumio RaaS</h3>
-              <p className="text-slate-300 text-sm leading-relaxed">
+              <h3 className="type-body-strong mb-2" style={{ color: 'rgba(255,255,255,0.65)' }}>Traditional Consulting</h3>
+              <p className="type-caption mb-6" style={{ color: 'rgba(255,255,255,0.35)' }}>
+                Pay by the hour. Months of meetings. Deliverables that may or may not move the needle.
+              </p>
+              <p style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.10em', textTransform: 'uppercase', color: 'rgba(239,68,68,0.60)' }}>
+                Risk on you
+              </p>
+            </div>
+
+            <div className="glass-card-featured" style={{ padding: '28px' }}>
+              <div style={{
+                width: '34px', height: '34px', borderRadius: '50%',
+                background: 'linear-gradient(135deg, #2563eb, #6366f1)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                marginBottom: '18px', color: '#ffffff',
+                boxShadow: '0 4px 12px rgba(37,99,235,0.35)',
+              }}>
+                <IconCheck />
+              </div>
+              <h3 className="type-body-strong mb-2" style={{ color: '#ffffff' }}>Lumio RaaS</h3>
+              <p className="type-caption mb-6" style={{ color: 'rgba(255,255,255,0.72)' }}>
                 Tell us the result you need. We design, build, and run the AI solution. You pay per result delivered.
               </p>
-              <div className="mt-5 text-xs font-mono text-cyan-400 uppercase tracking-wider">Risk on us</div>
+              <p style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.10em', textTransform: 'uppercase', color: 'var(--indigo-light)' }}>
+                Risk on us
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Products */}
-      <section className="py-32 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-block text-cyan-400 text-sm font-mono mb-4 uppercase tracking-widest">
-              {'// WHAT_WE_VE_BUILT'}
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Live products
-            </h2>
-            <p className="text-lg text-slate-400">
-              Each product is a result — ready to deliver.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="holo-card holo-card-hover rounded-2xl p-8 group flex flex-col">
-              <div className="text-3xl mb-4">📍</div>
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">LocationScore</h3>
-                <span className="text-xs font-mono text-purple-400 border border-purple-500/30 rounded-full px-2 py-0.5">SOON</span>
+      {/* ── PRODUCTS ─────────────────────────────── */}
+      <section className="tile tile-canvas text-center">
+        <div className="content-wide mx-auto">
+          <p className="type-tagline mb-4" style={{ color: 'var(--indigo)' }}>What We&apos;ve Built</p>
+          <h2 className="type-display mb-4" style={{ color: 'var(--text-ink)' }}>Live products</h2>
+          <p className="type-body mx-auto mb-14" style={{ color: 'var(--text-ink-60)', maxWidth: '480px' }}>
+            Each product is a result — ready to deliver.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6 text-left">
+            <div className="util-card product-card flex flex-col">
+              <div style={{
+                width: '48px', height: '48px', borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(37,99,235,0.10), rgba(99,102,241,0.07))',
+                border: '1px solid rgba(99,102,241,0.16)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                marginBottom: '18px', color: 'var(--blue)',
+              }}>
+                <IconPin />
               </div>
-              <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+              <div className="flex items-center gap-3 mb-3">
+                <h3 className="type-body-strong" style={{ color: 'var(--text-ink)' }}>LocationScore</h3>
+                <span style={{
+                  fontSize: '10px', fontWeight: 600, letterSpacing: '0.07em',
+                  textTransform: 'uppercase', color: 'var(--text-ink-60)',
+                  border: '1px solid var(--border-light)', borderRadius: '9999px', padding: '2px 8px',
+                }}>Soon</span>
+              </div>
+              <p className="type-caption mb-6 flex-grow" style={{ color: 'var(--text-ink-60)' }}>
                 Data-driven location analysis for entrepreneurs opening a store, restaurant, or café. Know before you sign the lease.
               </p>
               <div className="flex items-center justify-between">
-                <span className="text-slate-500 text-sm">Contact for pricing</span>
-                <Link href="/contact" className="text-sm text-slate-500 hover:text-cyan-400 transition-colors flex items-center gap-1">
-                  Enquire
-                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </Link>
+                <span className="type-caption" style={{ color: 'var(--text-ink-35)' }}>Contact for pricing</span>
+                <Link href="/contact" className="text-link type-caption">Enquire →</Link>
               </div>
             </div>
 
-            <div className="holo-card holo-card-hover rounded-2xl p-8 group flex flex-col">
-              <div className="text-3xl mb-4">🏠</div>
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Housing Price Tracker</h3>
-                <span className="text-xs font-mono text-purple-400 border border-purple-500/30 rounded-full px-2 py-0.5">SOON</span>
+            <div className="util-card product-card flex flex-col">
+              <div style={{
+                width: '48px', height: '48px', borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(99,102,241,0.10), rgba(139,92,246,0.07))',
+                border: '1px solid rgba(139,92,246,0.16)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                marginBottom: '18px', color: 'var(--indigo)',
+              }}>
+                <IconHome />
               </div>
-              <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+              <div className="flex items-center gap-3 mb-3">
+                <h3 className="type-body-strong" style={{ color: 'var(--text-ink)' }}>Housing Price Tracker</h3>
+                <span style={{
+                  fontSize: '10px', fontWeight: 600, letterSpacing: '0.07em',
+                  textTransform: 'uppercase', color: 'var(--text-ink-60)',
+                  border: '1px solid var(--border-light)', borderRadius: '9999px', padding: '2px 8px',
+                }}>Soon</span>
+              </div>
+              <p className="type-caption mb-6 flex-grow" style={{ color: 'var(--text-ink-60)' }}>
                 Track Dutch house prices by neighbourhood. Built for buyers, sellers, and renters who want data — not guesswork.
               </p>
               <div className="flex items-center justify-between">
-                <span className="text-slate-500 text-sm">Contact for pricing</span>
-                <Link href="/contact" className="text-sm text-slate-500 hover:text-cyan-400 transition-colors flex items-center gap-1">
-                  Enquire
-                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </Link>
+                <span className="type-caption" style={{ color: 'var(--text-ink-35)' }}>Contact for pricing</span>
+                <Link href="/contact" className="text-link type-caption">Enquire →</Link>
               </div>
             </div>
 
-            <div className="holo-card holo-card-hover rounded-2xl p-8 group flex flex-col">
-              <div className="text-3xl mb-4">📊</div>
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Store Traffic Analytics</h3>
-                <span className="text-xs font-mono text-purple-400 border border-purple-500/30 rounded-full px-2 py-0.5">SOON</span>
+            <div className="util-card product-card flex flex-col">
+              <div style={{
+                width: '48px', height: '48px', borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(139,92,246,0.10), rgba(168,85,247,0.07))',
+                border: '1px solid rgba(168,85,247,0.16)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                marginBottom: '18px', color: 'var(--violet)',
+              }}>
+                <IconChart />
               </div>
-              <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+              <div className="flex items-center gap-3 mb-3">
+                <h3 className="type-body-strong" style={{ color: 'var(--text-ink)' }}>Store Traffic Analytics</h3>
+                <span style={{
+                  fontSize: '10px', fontWeight: 600, letterSpacing: '0.07em',
+                  textTransform: 'uppercase', color: 'var(--text-ink-60)',
+                  border: '1px solid var(--border-light)', borderRadius: '9999px', padding: '2px 8px',
+                }}>Soon</span>
+              </div>
+              <p className="type-caption mb-6 flex-grow" style={{ color: 'var(--text-ink-60)' }}>
                 Daily footfall statistics for physical stores, with an analytical report and strategy to improve performance.
               </p>
               <div className="flex items-center justify-between">
-                <span className="text-slate-500 text-sm">Contact for pricing</span>
-                <Link href="/contact" className="text-sm text-slate-500 hover:text-cyan-400 transition-colors flex items-center gap-1">
-                  Enquire
-                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </Link>
+                <span className="type-caption" style={{ color: 'var(--text-ink-35)' }}>Contact for pricing</span>
+                <Link href="/contact" className="text-link type-caption">Enquire →</Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* How it works */}
-      <section className="py-32 px-4" style={{ background: 'var(--bg-secondary)' }}>
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-block text-cyan-400 text-sm font-mono mb-4 uppercase tracking-widest">
-              {'// HOW_IT_WORKS'}
+      {/* ── HOW IT WORKS ─────────────────────────── */}
+      <section className="tile tile-parchment text-center">
+        <div className="content-wrap mx-auto">
+          <p className="type-tagline mb-4" style={{ color: 'var(--indigo)' }}>How It Works</p>
+          <h2 className="type-display mb-14" style={{ color: 'var(--text-ink)' }}>Simple by design</h2>
+          <div className="grid md:grid-cols-3 gap-6 text-left">
+            <div className="util-card">
+              <p className="step-number mb-5">01</p>
+              <h3 className="type-body-strong mb-2" style={{ color: 'var(--text-ink)' }}>Tell us your challenge</h3>
+              <p className="type-caption" style={{ color: 'var(--text-ink-60)' }}>
+                Describe the business problem and the result you need. A report, a score, an insight — you define success.
+              </p>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Simple by design
-            </h2>
-          </div>
-
-          <div className="space-y-6">
-            {[
-              {
-                num: '01',
-                title: 'Tell us your challenge',
-                desc: 'Describe the business problem and the result you need. A report, a score, an insight — you define success.',
-              },
-              {
-                num: '02',
-                title: 'We design & build the solution',
-                desc: 'Our team builds a custom AI-powered solution. We agree on what counts as a delivered result before writing a line of code.',
-              },
-              {
-                num: '03',
-                title: 'Pay per result delivered',
-                desc: 'No upfront cost. No monthly seat fees. You pay when — and only when — the result lands in your hands.',
-              },
-            ].map((step) => (
-              <div key={step.num} className="holo-card rounded-2xl p-8 flex items-start space-x-6 group">
-                <div className="text-4xl font-bold neon-glow-cyan font-mono flex-shrink-0">{step.num}</div>
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">{step.title}</h3>
-                  <p className="text-slate-400 leading-relaxed">{step.desc}</p>
-                </div>
-              </div>
-            ))}
+            <div className="util-card">
+              <p className="step-number mb-5">02</p>
+              <h3 className="type-body-strong mb-2" style={{ color: 'var(--text-ink)' }}>We design &amp; build</h3>
+              <p className="type-caption" style={{ color: 'var(--text-ink-60)' }}>
+                Our team builds a custom AI-powered solution. We agree on what counts as a result before writing a line of code.
+              </p>
+            </div>
+            <div className="util-card">
+              <p className="step-number mb-5">03</p>
+              <h3 className="type-body-strong mb-2" style={{ color: 'var(--text-ink)' }}>Pay per result</h3>
+              <p className="type-caption" style={{ color: 'var(--text-ink-60)' }}>
+                No upfront cost. No monthly seat fees. You pay when — and only when — the result lands in your hands.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-32 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+      {/* ── CTA ──────────────────────────────────── */}
+      <section className="hero-mesh tile text-center">
+        <div className="content-wrap mx-auto">
+          <h2 className="type-display mb-5" style={{ color: 'var(--text-white)' }}>
             Have a problem<br />
-            <span className="neon-glow-cyan">that needs solving?</span>
+            <span className="gradient-text">that needs solving?</span>
           </h2>
-          <p className="text-lg text-slate-400 mb-10">
+          <p className="type-body mx-auto mb-10" style={{ color: 'var(--text-white-45)', maxWidth: '420px' }}>
             Tell us what result you need. We&apos;ll come back with a proposal — and a price per result.
           </p>
-          <Link
-            href="/contact"
-            className="group relative inline-flex items-center space-x-2 px-10 py-5 rounded-xl font-semibold text-lg cursor-pointer overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 opacity-100 group-hover:opacity-90 transition-opacity"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-400 opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></div>
-            <span className="relative z-10 text-white">Let&apos;s talk</span>
-            <svg className="relative z-10 w-5 h-5 text-white group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
+          <Link href="/contact" className="btn-pill">Let&apos;s talk</Link>
         </div>
       </section>
-
     </>
   );
 }

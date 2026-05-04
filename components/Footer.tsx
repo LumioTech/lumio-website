@@ -1,21 +1,50 @@
+import Link from 'next/link';
+
 export default function Footer() {
   return (
-    <footer className="mt-auto border-t border-cyan-500/10 relative z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <div className="flex items-center space-x-3">
-            <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shadow-lg shadow-cyan-400/50"></div>
-            <span className="text-slate-500 text-sm font-mono">
-              © {new Date().getFullYear()} LUMIO_AI_LAB
-            </span>
+    <footer
+      style={{
+        background: 'var(--bg-void)',
+        borderTop: '1px solid rgba(255,255,255,0.06)',
+      }}
+      className="px-8 py-16"
+    >
+      <div className="content-wide mx-auto">
+        <div className="flex flex-col md:flex-row justify-between gap-10 mb-12">
+          <div style={{ maxWidth: '260px' }}>
+            <p
+              style={{
+                fontFamily: 'var(--font-syne), system-ui, sans-serif',
+                fontSize: '18px',
+                fontWeight: 700,
+                letterSpacing: '-0.03em',
+                color: '#ffffff',
+                marginBottom: '10px',
+              }}
+            >
+              Lumio
+            </p>
+            <p className="type-caption" style={{ color: 'rgba(255,255,255,0.35)', lineHeight: 1.6 }}>
+              Result as a Service. We build AI — you pay per result delivered.
+            </p>
           </div>
-          <div className="flex items-center space-x-6 text-sm">
-            <span className="text-slate-500 font-mono">SYSTEMS_OPERATIONAL</span>
-            <div className="flex items-center space-x-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
-              <span className="text-slate-500 font-mono">99.9%</span>
+          <div className="flex gap-16">
+            <div>
+              <p className="type-caption-strong mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>
+                Company
+              </p>
+              <div className="flex flex-col gap-3">
+                <Link href="/about" className="type-fine-print footer-link">About</Link>
+                <Link href="/what-we-do" className="type-fine-print footer-link">What we do</Link>
+                <Link href="/contact" className="type-fine-print footer-link">Contact</Link>
+              </div>
             </div>
           </div>
+        </div>
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '24px' }}>
+          <p className="type-fine-print" style={{ color: 'rgba(255,255,255,0.22)' }}>
+            Copyright &copy; {new Date().getFullYear()} Lumio. All rights reserved. Amsterdam, Netherlands.
+          </p>
         </div>
       </div>
     </footer>
