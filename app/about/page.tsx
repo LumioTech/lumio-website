@@ -43,7 +43,7 @@ export default function About() {
               </div>
               <div className="flex items-center space-x-3 text-sm text-slate-400">
                 <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 flex-shrink-0"></div>
-                <span>7 years on a NASA project</span>
+                <span>7 years on a NASA experiment</span>
               </div>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">
