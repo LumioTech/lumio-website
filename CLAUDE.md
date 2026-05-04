@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Lumio is an AI company marketing website built with Next.js 15, React 19, TypeScript, and Tailwind CSS 4. The site showcases AI-powered business solutions with pages for home, about, services, and contact, plus an interactive chatbot widget.
+Lumio is an AI company marketing website built with Next.js 15, React 19, TypeScript, and Tailwind CSS 4. The site showcases AI-powered business solutions with pages for home (`/`), what-we-do (`/what-we-do`), about (`/about`), services (`/services`), and contact (`/contact`), plus a floating chatbot widget. There are no automated tests in this project.
 
 ## Development Commands
 
@@ -22,18 +22,26 @@ After making changes, always run `npm run build` to verify the production build,
 This project uses Next.js 15's App Router. All routes live in `app/`, shared UI in `components/`.
 
 ### Client vs Server Components
-Default to Server Components. Use `'use client'` only when needed (state, browser APIs, event handlers). Current client components: `ChatbotWidget.tsx`, `app/contact/page.tsx`.
+Default to Server Components. Use `'use client'` only when needed (state, browser APIs, event handlers). Current client components: `app/contact/page.tsx`.
 
 ### Contact Form & Email
 The contact form POSTs to `app/api/contact/route.ts`, which sends email via the [Resend](https://resend.com) SDK. Requires `RESEND_API_KEY` in `.env.local`. The recipient address is hardcoded in the route (`season0112@gmail.com`).
 
 **Security note**: The email HTML template in `route.ts` interpolates `name`, `email`, and `message` directly without sanitization — this is an HTML injection risk if the email client renders HTML. Sanitize these values before interpolation.
 
-### Chatbot Widget
-`components/ChatbotWidget.tsx` is a UI-only demo — `handleSend` uses a `setTimeout` to simulate a bot reply. To wire up a real backend, replace the `setTimeout` block with an API call and add proper conversation state and error handling.
-
 ### Deployment
 Live at **https://lumio.technology/**. Configured for Vercel. `vercel.json` is present; framework is auto-detected as Next.js.
+
+### Design System
+All visual styling is built with a dark futuristic theme defined in `app/globals.css`. New pages and components should use these custom CSS classes rather than one-off styles:
+- `holo-card` / `holo-card-hover` — glassmorphism cards with a holographic shimmer
+- `neon-glow-cyan` / `neon-glow-purple` / `neon-glow-pink` — neon text glow effects
+- `neural-gradient` — animated hero section background
+- `particles` / `particle` — floating dot background elements
+- `data-stream` — vertically scrolling light streaks
+- `scanlines` — CRT scanline overlay (used once in `app/layout.tsx`)
+
+CSS custom properties for colors live in `:root` (e.g. `--neon-cyan`, `--bg-primary`, `--glass-border`). Prefer these over Tailwind's `slate-` palette for on-brand consistency.
 
 ### GitHub Actions
 `claude-code-pr-review.yml` runs automated PR reviews using Claude Code (sticky comments, dependabot support).
@@ -41,5 +49,5 @@ Live at **https://lumio.technology/**. Configured for Vercel. `vercel.json` is p
 ## Gotchas
 
 - **Turbopack**: Both `dev` and `build` use `--turbopack`. To isolate Turbopack-specific issues, remove the flag temporarily.
-- **Fonts**: Geist fonts are loaded once in `app/layout.tsx` via `next/font/google`. Do not load fonts in individual pages.
+- **Font**: Inter is loaded once in `app/layout.tsx` via `next/font/google` as `--font-inter`. Do not load fonts in individual pages.
 - **Env vars**: Only `NEXT_PUBLIC_`-prefixed variables are exposed to the browser. Keep API keys (e.g. `RESEND_API_KEY`) without that prefix.
